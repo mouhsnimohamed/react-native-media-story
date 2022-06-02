@@ -18,8 +18,8 @@ type Props = {
   containerAvatarStyle?: StyleSheet.Styles;
   avatarStyle?: StyleSheet.Styles;
   titleStyle?: StyleSheet.Styles;
-  SkipeAction?: () => JSX.Element;
-  onSkipePress?: () => void;
+  SkipAction?: () => JSX.Element;
+  onSkipPress?: () => void;
   textReadMore?: string;
   defaultStory?: number;
   onClosePress?: () => void;
@@ -136,12 +136,9 @@ const Stories = (props: Props) => {
             />
           ))}
         </CubeNavigationHorizontal>
-        {props.SkipeAction && (
-          <TouchableOpacity
-            onPress={props.onSkipePress}
-            style={styles.skipeBtn}
-          >
-            {<props.SkipeAction />}
+        {props.SkipAction && (
+          <TouchableOpacity onPress={props.onSkipPress} style={styles.skipBtn}>
+            {<props.SkipAction />}
           </TouchableOpacity>
         )}
       </Modal>
@@ -178,7 +175,7 @@ const styles = StyleSheet.create({
     fontSize: 8,
     textAlign: "center",
   },
-  skipeBtn: {
+  skipBtn: {
     position: "absolute",
     bottom: 20,
     width: "94%",
