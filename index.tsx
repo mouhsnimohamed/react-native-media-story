@@ -1,4 +1,5 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
+import { CubeNavigationHorizontal } from "react-native-3dcube-navigation";
 import {
   FlatList,
   Image,
@@ -10,8 +11,6 @@ import {
 } from "react-native";
 import { StoryType } from "./src";
 
-const { CubeNavigationHorizontal } = require("react-native-3dcube-navigation");
-
 import StoryContainer from "./src/StoryContainer";
 
 type Props = {
@@ -19,6 +18,8 @@ type Props = {
   containerAvatarStyle?: StyleSheet.Styles;
   avatarStyle?: StyleSheet.Styles;
   titleStyle?: StyleSheet.Styles;
+  SkipAction?: () => JSX.Element;
+  onSkipPress?: () => void;
   textReadMore?: string;
   defaultStory?: number;
   onClosePress?: () => void;
@@ -106,7 +107,6 @@ const Stories = (props: Props) => {
           </View>
         )}
       />
-
       <Modal
         animationType="slide"
         transparent={false}
@@ -136,6 +136,11 @@ const Stories = (props: Props) => {
             />
           ))}
         </CubeNavigationHorizontal>
+        {props.SkipAction && (
+          <TouchableOpacity onPress={props.onSkipPress} style={styles.skipBtn}>
+            {<props.SkipAction />}
+          </TouchableOpacity>
+        )}
       </Modal>
     </View>
   );
@@ -169,6 +174,12 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 8,
     textAlign: "center",
+  },
+  skipBtn: {
+    position: "absolute",
+    bottom: 20,
+    width: "94%",
+    left: "3%",
   },
 });
 

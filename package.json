@@ -20,7 +20,7 @@
     "react-native": "*"
   },
   "dependencies": {
-    "react-native-3dcube-navigation": "^1.0.4",
+    "react-native-3dcube-navigation": "^1.0.5",
     "react-native-modalbox": "^1.7.1",
     "react-native-swipe-gestures": "^1.0.3",
     "react-native-vector-icons": "^6.6.0",
