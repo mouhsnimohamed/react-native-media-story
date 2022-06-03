@@ -28,11 +28,12 @@ type Props = {
 const Stories = (props: Props) => {
   const hasDefaultStory =
     typeof props.defaultStory === "number" &&
-    Number(props.defaultStory) < props.data.length - 1;
+    Number(props.defaultStory) <= props.data.length - 1;
   const [isModelOpen, setModel] = useState(hasDefaultStory); // defaultStory ? true : false);
   const [currentUserIndex, setCurrentUserIndex] = useState(
     hasDefaultStory ? Number(props.defaultStory) : 0
   );
+
   const [currentScrollValue, setCurrentScrollValue] = useState(0);
   const modalScroll = useRef(null);
 
@@ -62,6 +63,11 @@ const Stories = (props: Props) => {
       }
     } else {
       setModel(false);
+      if (typeof props.onSkipPress === "function") {
+        props.onSkipPress();
+      } else if (typeof props.onClosePress === "function") {
+        props.onClosePress();
+      }
     }
   };
 
