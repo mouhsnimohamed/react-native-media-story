@@ -12,9 +12,9 @@
     "stories instagram"
   ],
   "bugs": {
-    "url": "https://github.com/iguilhermeluis/react-native-stories-media/issues"
+    "url": "https://github.com/mouhsnimohamed/react-native-media-story/issues"
   },
-  "homepage": "https://github.com/iguilhermeluis/react-native-stories-media/blob/master/README.md",
+  "homepage": "https://github.com/mouhsnimohamed/react-native-media-story/blob/master/README.md",
   "peerDependencies": {
     "react": ">=15.0.0",
     "react-native": "*"
@@ -48,8 +48,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iguilhermeluis/react-native-stories-media"
+    "url": "git+https://github.com/mouhsnimohamed/react-native-media-story"
   },
-  "author": "Guilherme Faustino <contato@guilhermeluis.com> (https://github.com/iguilhermeluis)",
+  "author": "Mohamed Mouhsni <m.mouhsni@gmail.com> (https://mouhsni.com)",
   "license": "MIT"
 }
