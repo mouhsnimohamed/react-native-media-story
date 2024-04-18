@@ -18,7 +18,7 @@ type Props = {
 };
 const Story = (props: Props) => {
   const { story } = props;
-  const { url, type } = story || {};
+  const { url, type, component: Component } = story || {};
   const [isPortation, setIsPortation] = useState(false);
   const [heightScaled, setHeightScaled] = useState(231);
 
@@ -29,7 +29,7 @@ const Story = (props: Props) => {
         <ActivityIndicator color="white" />
       </View>
       )} */}
-      {type === "image" ? (
+      {type === "image" && (
         <Image
           source={{ uri: url }}
           onLoadEnd={props.onImageLoaded}
@@ -37,7 +37,9 @@ const Story = (props: Props) => {
           resizeMode="stretch"
           // width={ScreenWidth}
         />
-      ) : (
+      )}
+
+      {type === "video" && (
         <Video
           source={{ uri: url }}
           paused={props.pause || props.isNewStory}
@@ -60,6 +62,7 @@ const Story = (props: Props) => {
           resizeMode={"stretch"}
         />
       )}
+      {type === "view" && Component && <Component />}
     </View>
   );
 };
