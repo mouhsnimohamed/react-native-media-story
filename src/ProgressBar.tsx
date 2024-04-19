@@ -1,5 +1,5 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {Animated, Easing, StyleSheet, View} from 'react-native';
+import React, { useEffect, useRef, useState } from "react";
+import { Animated, Easing, StyleSheet, View } from "react-native";
 
 type Props = {
   next: () => void;
@@ -14,13 +14,13 @@ type Props = {
 };
 
 const ProgressBar = (props: Props) => {
-  const {index, currentIndex, duration, length, active} = props;
+  const { index, currentIndex, duration, length, active } = props;
   const [pauseTime, setPauseTime] = useState(null);
   const [startTime, setStartTime] = useState(null);
   const scale = useRef(new Animated.Value(0)).current;
   const [width, setWidth] = useState(0);
 
-  const onLayoutAdded = evt => {
+  const onLayoutAdded = (evt) => {
     setWidth(evt.width);
   };
 
@@ -35,7 +35,7 @@ const ProgressBar = (props: Props) => {
               duration: getDuration(),
               easing: Easing.linear,
               useNativeDriver: false,
-            }).start(({finished}) => {
+            }).start(({ finished }) => {
               if (finished) props.next();
             })
           : scale.setValue(0);
@@ -65,7 +65,7 @@ const ProgressBar = (props: Props) => {
     if (index === currentIndex) {
       if (props.pause) {
         const endtime = Date.now();
-        console.log('endtime', endtime);
+        console.log("endtime", endtime);
         setPauseTime(endtime);
       }
 
@@ -78,15 +78,16 @@ const ProgressBar = (props: Props) => {
 
   return (
     <View
-      onLayout={evt => onLayoutAdded(evt.nativeEvent.layout)}
-      style={styles.container}>
+      onLayout={(evt) => onLayoutAdded(evt.nativeEvent.layout)}
+      style={styles.container}
+    >
       <Animated.View
         style={[
           styles.container,
           {
             width: scale,
-            backgroundColor: index <= currentIndex ? 'white' : '#555',
-            position: 'absolute',
+            backgroundColor: index <= currentIndex ? "#003D7C" : "#92b1ca",
+            position: "absolute",
             top: 0,
             margin: 0,
           },
@@ -100,7 +101,7 @@ const styles = StyleSheet.create({
   container: {
     height: 4,
     flex: 1,
-    backgroundColor: '#555',
+    backgroundColor: "#92b1ca",
     margin: 2,
   },
 });

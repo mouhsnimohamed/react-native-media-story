@@ -19,6 +19,7 @@ type Props = {
   avatarStyle?: StyleSheet.Styles;
   titleStyle?: StyleSheet.Styles;
   SkipAction?: () => JSX.Element;
+  hideProfiles?: boolean;
   onSkipPress?: () => void;
   textReadMore?: string;
   defaultStory?: number;
@@ -94,25 +95,29 @@ const Stories = (props: Props) => {
 
   return (
     <View style={styles.container}>
-      <FlatList
-        data={props.data}
-        horizontal
-        keyExtractor={(item) => item.title}
-        renderItem={({ item, index }) => (
-          <View style={styles.boxStory}>
-            <TouchableOpacity onPress={() => onStorySelect(index)}>
-              <View style={[styles.superCircle, props.containerAvatarStyle]}>
-                <Image
-                  style={[styles.circle, props.avatarStyle]}
-                  source={{ uri: item.profile }}
-                />
-              </View>
+      {!props.hideProfiles && (
+        <FlatList
+          data={props.data}
+          horizontal
+          keyExtractor={(item) => item.title}
+          renderItem={({ item, index }) => (
+            <View style={styles.boxStory}>
+              <TouchableOpacity onPress={() => onStorySelect(index)}>
+                <View style={[styles.superCircle, props.containerAvatarStyle]}>
+                  <Image
+                    style={[styles.circle, props.avatarStyle]}
+                    source={{ uri: item.profile }}
+                  />
+                </View>
 
-              <Text style={[styles.title, props.titleStyle]}>{item.title}</Text>
-            </TouchableOpacity>
-          </View>
-        )}
-      />
+                <Text style={[styles.title, props.titleStyle]}>
+                  {item.title}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          )}
+        />
+      )}
       <Modal
         animationType="slide"
         transparent={false}
