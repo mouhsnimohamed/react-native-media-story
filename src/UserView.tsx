@@ -50,7 +50,12 @@ export default memo(function UserView(props: Props) {
         </Text>
       </View>
       <TouchableOpacity onPress={props.onClosePress}>
-        <Icon name="close" color="white" size={25} style={{ marginRight: 8 }} />
+        <Icon
+          name="close"
+          color="#003D7C"
+          size={25}
+          style={{ marginRight: 8 }}
+        />
       </TouchableOpacity>
     </View>
   );

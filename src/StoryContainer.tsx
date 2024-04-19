@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   ActivityIndicator,
   Dimensions,
@@ -37,11 +37,17 @@ const StoryContainer: React.FC<Props> = (props: Props) => {
 
   const { isReadMore }: StoryType = story || {};
 
+  useEffect(() => {
+    // check if type is "view" and set loader to false
+    onViewLoad();
+  }, [currentIndex]);
+
   // const onVideoLoaded = (length) => {
   //   props.onVideoLoaded(length.duration);
   // };
 
   const changeStory = (evt: NativeTouchEvent) => {
+    onViewLoad();
     if (evt.locationX > SCREEN_WIDTH / 2) {
       nextStory();
     } else {
@@ -68,6 +74,12 @@ const StoryContainer: React.FC<Props> = (props: Props) => {
     } else {
       setCurrentIndex(0);
       props.onStoryPrevious(false);
+    }
+  };
+
+  const onViewLoad = () => {
+    if (story.type === "view") {
+      setLoaded(true);
     }
   };
 

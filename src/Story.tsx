@@ -62,7 +62,7 @@ const Story = (props: Props) => {
           resizeMode={"stretch"}
         />
       )}
-      {type === "view" && Component && <Component />}
+      {type === "view" && Component && Component}
     </View>
   );
 };
@@ -70,8 +70,6 @@ const Story = (props: Props) => {
 Story.propTypes = {
   story: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
-
-//  720 405 231.42857142857142
 
 const styles = StyleSheet.create({
   container: {

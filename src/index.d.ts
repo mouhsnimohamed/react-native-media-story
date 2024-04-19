@@ -24,4 +24,10 @@ export type StoriesType = {
   title?: string;
   storyid?: number;
   stories?: Array<StoryType>;
+  SkipAction?: () => JSX.Element;
+  hideProfiles?: boolean;
+  onSkipPress?: () => void;
+  textReadMore?: string;
+  defaultStory?: number;
+  onClosePress?: () => void;
 };
